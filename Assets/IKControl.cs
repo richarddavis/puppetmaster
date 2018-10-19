@@ -65,10 +65,16 @@ public class IKControl : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        _HandRightTarget = GameObject.FindGameObjectWithTag("HandRightIK");
-        _HandLeftTarget = GameObject.FindGameObjectWithTag("HandLeftIK");
-        _FootRightTarget = GameObject.FindGameObjectWithTag("FootRightIK");
-        _FootLeftTarget = GameObject.FindGameObjectWithTag("FootLeftIK");
+
+        _HandRightTarget = HandRightObj.gameObject;
+        _HandLeftTarget = HandLeftObj.gameObject;
+        _FootRightTarget = FootRightObj.gameObject;
+        _FootLeftTarget = FootLeftObj.gameObject;
+
+        //_HandRightTarget = GameObject.FindGameObjectWithTag("HandRightIK");
+        //_HandLeftTarget = GameObject.FindGameObjectWithTag("HandLeftIK");
+        //_FootRightTarget = GameObject.FindGameObjectWithTag("FootRightIK");
+        //_FootLeftTarget = GameObject.FindGameObjectWithTag("FootLeftIK");
     }
 
     private void Update()
@@ -228,7 +234,6 @@ public class IKControl : MonoBehaviour
         Kinect.Joint SpineMid = kinectBody.Joints[Kinect.JointType.SpineMid];
         float TorsoLength = GetBoneSize(Neck, SpineMid);
         transform.parent.localScale = new Vector3(TorsoLength * BODY_SCALE, TorsoLength * BODY_SCALE, TorsoLength * BODY_SCALE);
-        //transform.localScale = new Vector3(TorsoLength * BODY_SCALE, TorsoLength * BODY_SCALE, TorsoLength * BODY_SCALE);
 
         return body;
     }
@@ -243,13 +248,8 @@ public class IKControl : MonoBehaviour
     private void RefreshBodyObject(Kinect.Body body, GameObject bodyObject)
     {
         // Set the position of the avatar based on the kinect body location
-        //transform.SetPositionAndRotation(bodyObject.transform.position, bodyObject.transform.rotation);
         Kinect.Joint SpineMid = body.Joints[Kinect.JointType.SpineMid];
         transform.parent.position = GetVector3FromJoint(SpineMid);
-
-        //Kinect.Joint Neck = body.Joints[Kinect.JointType.Neck];
-        //float TorsoLength = GetBoneSize(Neck, SpineMid);
-        //transform.localScale = new Vector3(TorsoLength * BODY_SCALE, TorsoLength * BODY_SCALE, TorsoLength * BODY_SCALE);
 
         // Get the position and rotation of both hands from Kinect
         Kinect.Joint HandRight = body.Joints[Kinect.JointType.HandRight];
