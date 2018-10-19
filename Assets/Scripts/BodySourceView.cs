@@ -70,6 +70,7 @@ public class BodySourceView : MonoBehaviour
                 continue;
               }
                 
+            
             if(body.IsTracked)
             {
                 trackedIds.Add (body.TrackingId);
