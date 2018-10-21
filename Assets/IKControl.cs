@@ -10,6 +10,7 @@ public class IKControl : MonoBehaviour
 {
 
     protected Animator animator;
+    public bool ShowSkeleton = false;
 
     public bool IkActive = false;
     public Transform HandRightObj = null;
@@ -218,12 +219,16 @@ public class IKControl : MonoBehaviour
 
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
         {
-            GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
-            LineRenderer lr = jointObj.AddComponent<LineRenderer>();
-            lr.SetVertexCount(2);
-            lr.material = BoneMaterial;
-            lr.SetWidth(0.05f, 0.05f);
+            GameObject jointObj = new GameObject();
+            if (ShowSkeleton)
+            {
+                jointObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                LineRenderer lr = jointObj.AddComponent<LineRenderer>();
+                lr.SetVertexCount(2);
+                lr.material = BoneMaterial;
+                lr.SetWidth(0.05f, 0.05f);
+            }
 
             jointObj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             jointObj.name = jt.ToString();
@@ -291,16 +296,19 @@ public class IKControl : MonoBehaviour
                 _FootLeftTarget.transform.position = jointObj.localPosition;
             }
 
-            LineRenderer lr = jointObj.GetComponent<LineRenderer>();
-            if (targetJoint.HasValue)
+            if (ShowSkeleton)
             {
-                lr.SetPosition(0, jointObj.localPosition);
-                lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
-                lr.SetColors(GetColorForState(sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
-            }
-            else
-            {
-                lr.enabled = false;
+                LineRenderer lr = jointObj.GetComponent<LineRenderer>();
+                if (targetJoint.HasValue)
+                {
+                    lr.SetPosition(0, jointObj.localPosition);
+                    lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
+                    lr.SetColors(GetColorForState(sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
+                }
+                else
+                {
+                    lr.enabled = false;
+                }
             }
         }
     }
