@@ -71,11 +71,6 @@ public class IKControl : MonoBehaviour
         _HandLeftTarget = HandLeftObj.gameObject;
         _FootRightTarget = FootRightObj.gameObject;
         _FootLeftTarget = FootLeftObj.gameObject;
-
-        //_HandRightTarget = GameObject.FindGameObjectWithTag("HandRightIK");
-        //_HandLeftTarget = GameObject.FindGameObjectWithTag("HandLeftIK");
-        //_FootRightTarget = GameObject.FindGameObjectWithTag("FootRightIK");
-        //_FootLeftTarget = GameObject.FindGameObjectWithTag("FootLeftIK");
     }
 
     private void Update()
@@ -250,6 +245,18 @@ public class IKControl : MonoBehaviour
         return Vector3.Magnitude(v1 - v2);
     }
 
+    private Quaternion GetQuaternionFromJointOrientation(Kinect.JointOrientation jo)
+    {
+        Quaternion joQuaternion = new Quaternion(jo.Orientation.X, jo.Orientation.Y, jo.Orientation.Z, jo.Orientation.W);
+        return joQuaternion;
+    }
+
+    private Vector3 GetEulerAnglesFromJointOrientation(Kinect.JointOrientation jo)
+    {
+        Quaternion joQuaternion = new Quaternion(jo.Orientation.X, jo.Orientation.Y, jo.Orientation.Z, jo.Orientation.W);
+        return joQuaternion.eulerAngles;
+    }
+
     private void RefreshBodyObject(Kinect.Body body, GameObject bodyObject)
     {
         // Set the position of the avatar based on the kinect body location
@@ -279,6 +286,8 @@ public class IKControl : MonoBehaviour
             if (jt.ToString().Equals("HandLeft"))
             {
                 _HandRightTarget.transform.position = jointObj.localPosition;
+                _HandRightTarget.transform.rotation = GetQuaternionFromJointOrientation(HandLeftOrientation);
+                _HandRightTarget.transform.Rotate(new Vector3(-90f, 0f, 90f));
             }
 
             if (jt.ToString().Equals("HandRight"))
