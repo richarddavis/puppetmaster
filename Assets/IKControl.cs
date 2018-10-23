@@ -29,6 +29,11 @@ public class IKControl : MonoBehaviour
     private GameObject _FootRightTarget;
     private GameObject _FootLeftTarget;
 
+    private Vector3 HandRightRotationAdjustment = new Vector3(-90f, 180f, 90f);
+    private Vector3 HandLeftRotationAdjustment = new Vector3(-90f, 180f, -90f);
+    private Vector3 FootRightRotationAdjustment = new Vector3(0f, -90f, 180f);
+    private Vector3 FootLeftRotationAdjustment = new Vector3(0f, 90f, 180f);
+
     private Dictionary<Kinect.JointType, Kinect.JointType> _BoneMap = new Dictionary<Kinect.JointType, Kinect.JointType>()
     {
         { Kinect.JointType.FootLeft, Kinect.JointType.AnkleLeft },
@@ -257,17 +262,33 @@ public class IKControl : MonoBehaviour
         return joQuaternion.eulerAngles;
     }
 
+    private void RotateAvatar(Transform t, Kinect.JointOrientation jo)
+    {
+        transform.parent.rotation = GetQuaternionFromJointOrientation(jo);
+        transform.parent.Rotate(new Vector3(0f, 180f, 0f));
+    }
+
     private void RefreshBodyObject(Kinect.Body body, GameObject bodyObject)
     {
         // Set the position of the avatar based on the kinect body location
         Kinect.Joint SpineMid = body.Joints[Kinect.JointType.SpineMid];
         transform.parent.position = GetVector3FromJoint(SpineMid);
 
+        // Set the rotation of the avatar based on the kinect body rotation
+        Kinect.JointOrientation SpineShoulderOrientation = body.JointOrientations[Kinect.JointType.SpineShoulder];
+        RotateAvatar(transform, SpineShoulderOrientation);
+
         // Get the position and rotation of both hands from Kinect
         Kinect.Joint HandRight = body.Joints[Kinect.JointType.HandRight];
         Kinect.Joint HandLeft = body.Joints[Kinect.JointType.HandLeft];
         Kinect.JointOrientation HandRightOrientation = body.JointOrientations[Kinect.JointType.HandRight];
         Kinect.JointOrientation HandLeftOrientation = body.JointOrientations[Kinect.JointType.HandLeft];
+
+        // Get the position and rotation of both feet from Kinect
+        Kinect.Joint FootRight = body.Joints[Kinect.JointType.FootRight];
+        Kinect.Joint FootLeft = body.Joints[Kinect.JointType.FootLeft];
+        Kinect.JointOrientation FootRightOrientation = body.JointOrientations[Kinect.JointType.AnkleRight];
+        Kinect.JointOrientation FootLeftOrientation = body.JointOrientations[Kinect.JointType.AnkleLeft];
 
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
         {
@@ -287,22 +308,29 @@ public class IKControl : MonoBehaviour
             {
                 _HandRightTarget.transform.position = jointObj.localPosition;
                 _HandRightTarget.transform.rotation = GetQuaternionFromJointOrientation(HandLeftOrientation);
-                _HandRightTarget.transform.Rotate(new Vector3(-90f, 0f, 90f));
+                _HandRightTarget.transform.Rotate(HandLeftRotationAdjustment);
             }
 
             if (jt.ToString().Equals("HandRight"))
             {
                 _HandLeftTarget.transform.position = jointObj.localPosition;
+                _HandLeftTarget.transform.rotation = GetQuaternionFromJointOrientation(HandRightOrientation);
+                _HandLeftTarget.transform.Rotate(HandRightRotationAdjustment);
             }
 
             if (jt.ToString().Equals("FootLeft"))
             {
                 _FootRightTarget.transform.position = jointObj.localPosition;
+                _FootRightTarget.transform.rotation = GetQuaternionFromJointOrientation(FootLeftOrientation);
+                _FootRightTarget.transform.Rotate(FootLeftRotationAdjustment);
+
             }
 
             if (jt.ToString().Equals("FootRight"))
             {
                 _FootLeftTarget.transform.position = jointObj.localPosition;
+                _FootLeftTarget.transform.rotation = GetQuaternionFromJointOrientation(FootRightOrientation);
+                _FootLeftTarget.transform.Rotate(FootRightRotationAdjustment);
             }
 
             if (ShowSkeleton)

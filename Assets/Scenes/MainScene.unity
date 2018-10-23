@@ -475,6 +475,11 @@ Prefab:
       propertyPath: BodySourceManager
       value: 
       objectReference: {fileID: 1698423884}
+    - target: {fileID: 114130210496773496, guid: e90a5b043fb00f74d91f319d5fbd9990,
+        type: 2}
+      propertyPath: ShowSkeleton
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e90a5b043fb00f74d91f319d5fbd9990, type: 2}
   m_IsPrefabAsset: 0

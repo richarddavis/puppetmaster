@@ -2529,7 +2529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817e3047b595a4a49aea1ca4ee5aa1b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowSkeleton: 0
+  ShowSkeleton: 1
   IkActive: 1
   HandRightObj: {fileID: 4502932635573022}
   HandLeftObj: {fileID: 4946316160974652}
@@ -2538,6 +2538,8 @@ MonoBehaviour:
   LookObj: {fileID: 0}
   BoneMaterial: {fileID: 2100000, guid: f2ea145c63353784985576f08398a815, type: 2}
   BodySourceManager: {fileID: 0}
+  HandRightRotationAdjustment: {x: -90, y: 180, z: 90}
+  HandLeftRotationAdjustment: {x: -90, y: 180, z: -90}
 --- !u!136 &136291445249741356
 CapsuleCollider:
   m_ObjectHideFlags: 1
