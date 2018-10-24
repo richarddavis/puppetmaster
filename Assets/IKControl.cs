@@ -20,9 +20,12 @@ public class IKControl : MonoBehaviour
     public Transform LookObj = null;
     private const float BODY_SCALE = 6.5f;
 
+    public Kinect.Body KinectBodyObject;
+    public GameObject UnityBodyObject;
+
     public Material BoneMaterial;
-    public GameObject BodySourceManager;
-    private BodySourceManager _BodyManager;
+    //public GameObject BodySourceManager;
+    //private BodySourceManager _BodyManager;
 
     private GameObject _HandRightTarget;
     private GameObject _HandLeftTarget;
@@ -80,66 +83,7 @@ public class IKControl : MonoBehaviour
 
     private void Update()
     {
-        if (BodySourceManager == null)
-        {
-            return;
-        }
-
-        _BodyManager = BodySourceManager.GetComponent<BodySourceManager>();
-        if (_BodyManager == null)
-        {
-            return;
-        }
-
-        Kinect.Body[] data = _BodyManager.GetData();
-        if (data == null)
-        {
-            return;
-        }
-
-        List<ulong> trackedIds = new List<ulong>();
-        foreach (var body in data)
-        {
-            if (body == null)
-            {
-                continue;
-            }
-
-            if (body.IsTracked)
-            {
-                trackedIds.Add(body.TrackingId);
-            }
-        }
-
-        List<ulong> knownIds = new List<ulong>(_Bodies.Keys);
-
-        // First delete untracked bodies
-        foreach (ulong trackingId in knownIds)
-        {
-            if (!trackedIds.Contains(trackingId))
-            {
-                Destroy(_Bodies[trackingId]);
-                _Bodies.Remove(trackingId);
-            }
-        }
-
-        foreach (var body in data)
-        {
-            if (body == null)
-            {
-                continue;
-            }
-
-            if (body.IsTracked)
-            {
-                if (!_Bodies.ContainsKey(body.TrackingId))
-                {
-                    _Bodies[body.TrackingId] = CreateBodyObject(body);
-                }
-
-                RefreshBodyObject(body, _Bodies[body.TrackingId]);
-            }
-        }
+        RefreshBodyObject(KinectBodyObject, UnityBodyObject);
     }
 
     //a callback for calculating IK
@@ -213,7 +157,7 @@ public class IKControl : MonoBehaviour
         }
     }
 
-    private GameObject CreateBodyObject(Kinect.Body kinectBody)
+    public GameObject CreateBodyObject(Kinect.Body kinectBody)
     {
         GameObject body = new GameObject("Body:" + kinectBody.TrackingId);
 
@@ -268,7 +212,7 @@ public class IKControl : MonoBehaviour
         transform.parent.Rotate(new Vector3(0f, 180f, 0f));
     }
 
-    private void RefreshBodyObject(Kinect.Body body, GameObject bodyObject)
+    public void RefreshBodyObject(Kinect.Body body, GameObject bodyObject)
     {
         // Set the position of the avatar based on the kinect body location
         Kinect.Joint SpineMid = body.Joints[Kinect.JointType.SpineMid];

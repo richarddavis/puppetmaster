@@ -1428,7 +1428,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1015380779839190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.314052, y: -0.7786298, z: 5.462764}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4395626866766366}
@@ -2529,17 +2529,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817e3047b595a4a49aea1ca4ee5aa1b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowSkeleton: 1
+  ShowSkeleton: 0
   IkActive: 1
   HandRightObj: {fileID: 4502932635573022}
   HandLeftObj: {fileID: 4946316160974652}
   FootRightObj: {fileID: 4994905762863146}
   FootLeftObj: {fileID: 4940015590143646}
   LookObj: {fileID: 0}
+  UnityBodyObject: {fileID: 0}
   BoneMaterial: {fileID: 2100000, guid: f2ea145c63353784985576f08398a815, type: 2}
-  BodySourceManager: {fileID: 0}
-  HandRightRotationAdjustment: {x: -90, y: 180, z: 90}
-  HandLeftRotationAdjustment: {x: -90, y: 180, z: -90}
 --- !u!136 &136291445249741356
 CapsuleCollider:
   m_ObjectHideFlags: 1
