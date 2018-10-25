@@ -10,7 +10,7 @@ public class IKControl : MonoBehaviour
 {
 
     protected Animator animator;
-    public bool ShowSkeleton = false;
+    private bool ShowSkeleton = false;
 
     public bool IkActive = false;
     public Transform HandRightObj = null;
@@ -18,7 +18,7 @@ public class IKControl : MonoBehaviour
     public Transform FootRightObj = null;
     public Transform FootLeftObj = null;
     public Transform LookObj = null;
-    private const float BODY_SCALE = 6.5f;
+    private const float BODY_SCALE = 6f;
 
     public Kinect.Body KinectBodyObject;
     public GameObject UnityBodyObject;
