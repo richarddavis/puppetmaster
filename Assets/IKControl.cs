@@ -32,8 +32,8 @@ public class IKControl : MonoBehaviour
     private GameObject _FootRightTarget;
     private GameObject _FootLeftTarget;
 
-    private Vector3 HandRightRotationAdjustment = new Vector3(-90f, 180f, 90f);
-    private Vector3 HandLeftRotationAdjustment = new Vector3(-90f, 180f, -90f);
+    public Vector3 HandRightRotationAdjustment = new Vector3(-90f, -90f, -90f);
+    public Vector3 HandLeftRotationAdjustment = new Vector3(-90f, 0f, -90f);
     private Vector3 FootRightRotationAdjustment = new Vector3(0f, -90f, 180f);
     private Vector3 FootLeftRotationAdjustment = new Vector3(0f, 90f, 180f);
 

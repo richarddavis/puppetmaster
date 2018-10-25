@@ -188,7 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Characters:
   - {fileID: 1015380779839190, guid: e90a5b043fb00f74d91f319d5fbd9990, type: 2}
-  - {fileID: 1852614607554774, guid: 53c6efaecad5d874d8ef5cf2f2e44396, type: 2}
+  - {fileID: 1048396352038858, guid: 6c39f3099dccf1c44b68324df70eec57, type: 2}
   BodySourceManager: {fileID: 1698423884}
 --- !u!4 &21549317
 Transform:
