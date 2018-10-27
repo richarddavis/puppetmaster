@@ -81,10 +81,7 @@ public class PuppetManager : MonoBehaviour {
                     PuppetClone.GetComponentInChildren<IKControl>().UnityBodyObject = UnityBodyObject;
                     _Puppets[body.TrackingId] = PuppetClone;
                     _Bodies[body.TrackingId] = UnityBodyObject;
-                    //Debug.Log(_Bodies.Keys.ToString());
-                    //_Bodies[body.TrackingId] = CreateBodyObject(body);
                 }
-                //RefreshBodyObject(body, _Bodies[body.TrackingId]);
             }
         }
     }
