@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Windows.Kinect;
+using System.IO;
 
 public class ColorSourceManager : MonoBehaviour 
 {
@@ -11,6 +12,8 @@ public class ColorSourceManager : MonoBehaviour
     private ColorFrameReader _Reader;
     private Texture2D _Texture;
     private byte[] _Data;
+
+    private int counter = 0;
     
     public Texture2D GetColorTexture()
     {
@@ -53,6 +56,10 @@ public class ColorSourceManager : MonoBehaviour
                 
                 frame.Dispose();
                 frame = null;
+
+                //byte[] bytes = _Texture.EncodeToPNG();
+                //File.WriteAllBytes(Application.dataPath + "/../Video/SavedScreen" + counter + ".png", bytes);
+                //counter += 1;
             }
         }
     }

@@ -24,7 +24,8 @@ public class ColorSourceView : MonoBehaviour
         {
             return;
         }
-        
-        gameObject.GetComponent<Renderer>().material.mainTexture = _ColorManager.GetColorTexture();
+
+        Texture2D tex2d = _ColorManager.GetColorTexture();
+        gameObject.GetComponent<Renderer>().material.mainTexture = tex2d;
     }
 }
