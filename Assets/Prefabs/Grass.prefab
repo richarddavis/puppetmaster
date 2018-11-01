@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4998834313359972}
   - component: {fileID: 33553540913241344}
   - component: {fileID: 23931782706518512}
+  - component: {fileID: 65740464510750116}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
@@ -34,9 +35,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1113070782187640}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -4.3691087, y: -0.011075169, z: 4.0922813}
-  m_LocalScale: {x: 56.103317, y: 56.103317, z: 56.103317}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 0.76811004, y: -9.71, z: 9.85}
+  m_LocalScale: {x: 80, y: 79.99997, z: 79.99997}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -86,3 +87,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1113070782187640}
   m_Mesh: {fileID: 4300000, guid: 85d4db50afd15354eb4a2b87f45e000f, type: 3}
+--- !u!65 &65740464510750116
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1113070782187640}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.32722178, y: 0.16672748, z: 0.010298308}
+  m_Center: {x: 0.0005369067, y: -0.00039848106, z: -0.007611595}

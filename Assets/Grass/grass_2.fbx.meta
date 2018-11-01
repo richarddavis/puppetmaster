@@ -1,17 +1,52 @@
 fileFormatVersion: 2
 guid: 85d4db50afd15354eb4a2b87f45e000f
 ModelImporter:
-  serializedVersion: 23
+  serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Plane.004_MeshPart0
+    100004: Plane.004_MeshPart1
+    100006: Plane.004_MeshPart2
+    100008: Plane.004_MeshPart3
+    100010: Plane.004_MeshPart4
+    100012: Plane.004_MeshPart5
+    100014: Plane.004_MeshPart6
     400000: //RootNode
+    400002: Plane.004_MeshPart0
+    400004: Plane.004_MeshPart1
+    400006: Plane.004_MeshPart2
+    400008: Plane.004_MeshPart3
+    400010: Plane.004_MeshPart4
+    400012: Plane.004_MeshPart5
+    400014: Plane.004_MeshPart6
     2100000: ground_mat1
     2100002: mushroom_mat2
     2100004: rock_mat1
     2100006: grass_mat1
     2300000: //RootNode
+    2300002: Plane.004_MeshPart0
+    2300004: Plane.004_MeshPart1
+    2300006: Plane.004_MeshPart2
+    2300008: Plane.004_MeshPart3
+    2300010: Plane.004_MeshPart4
+    2300012: Plane.004_MeshPart5
+    2300014: Plane.004_MeshPart6
     3300000: //RootNode
+    3300002: Plane.004_MeshPart0
+    3300004: Plane.004_MeshPart1
+    3300006: Plane.004_MeshPart2
+    3300008: Plane.004_MeshPart3
+    3300010: Plane.004_MeshPart4
+    3300012: Plane.004_MeshPart5
+    3300014: Plane.004_MeshPart6
     4300000: Plane.004
+    4300002: Plane.004_MeshPart0
+    4300004: Plane.004_MeshPart1
+    4300006: Plane.004_MeshPart2
+    4300008: Plane.004_MeshPart3
+    4300010: Plane.004_MeshPart4
+    4300012: Plane.004_MeshPart5
+    4300014: Plane.004_MeshPart6
   externalObjects: {}
   materials:
     importMaterials: 0
@@ -31,7 +66,6 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -56,15 +90,11 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    preserveHierarchy: 0
-    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -84,6 +114,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
