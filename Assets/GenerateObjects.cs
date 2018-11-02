@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class GenerateObjects : MonoBehaviour {
 
-    public GameObject Bat;
-    public int NumberOfBats;
     public float RegenerateTime = 20f;
     private List<GameObject> _CreatedObjects = new List<GameObject>();
 
     public List<GameObject> ObjectsToGenerate;
     public List<int> NumberToGenerate;
+    public List<float> ScaleOfObject;
 
     private Vector3 _MinBounds = new Vector3(-20f, -10f, 0f);
-    private Vector3 _MaxBounds = new Vector3(20, 4f, 20f);
+    private Vector3 _MaxBounds = new Vector3(20, 10f, 40f);
 
 	// Use this for initialization
 	void Start () {
@@ -45,7 +44,7 @@ public class GenerateObjects : MonoBehaviour {
             {
                 Vector3 randomObjPos = GetRandomPosition(_MinBounds, _MaxBounds);
                 GameObject randObj = Instantiate<GameObject>(ObjectsToGenerate[i], randomObjPos, Quaternion.Euler(new Vector3(-70f, 180f, 0f)));
-                Debug.Log(randObj);
+                randObj.transform.localScale = new Vector3(ScaleOfObject[i], ScaleOfObject[i], ScaleOfObject[i]);
                 _CreatedObjects.Add(randObj);
             }
         }
