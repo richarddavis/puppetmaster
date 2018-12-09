@@ -11,8 +11,8 @@ public class GenerateObjects : MonoBehaviour {
     public List<int> NumberToGenerate;
     public List<float> ScaleOfObject;
 
-    private Vector3 _MinBounds = new Vector3(-20f, 2f, -3f);
-    private Vector3 _MaxBounds = new Vector3(20, 10f, 15f);
+    private Vector3 _MinBounds = new Vector3(-10f, 2f, -2f);
+    private Vector3 _MaxBounds = new Vector3(10f, 5f, 8f);
 
 	// Use this for initialization
 	void Start () {
