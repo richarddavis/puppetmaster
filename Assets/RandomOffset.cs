@@ -7,6 +7,5 @@ public class RandomOffset : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Animator a = gameObject.GetComponent<Animator>();
-        Debug.Log(a.GetFloat("CycleOffset"));
 	}
 }

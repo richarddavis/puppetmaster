@@ -6,13 +6,18 @@ public class BodySourceManager : MonoBehaviour
 {
     private KinectSensor _Sensor;
     private BodyFrameReader _Reader;
-    private Body[] _Data = null;
+    private Body[] _BodyData = null;
+    private Windows.Kinect.Vector4 _FloorClipPlane;
     
     public Body[] GetData()
     {
-        return _Data;
+        return _BodyData;
     }
     
+    public Windows.Kinect.Vector4 GetFloorData()
+    {
+        return _FloorClipPlane;
+    }
 
     void Start () 
     {
@@ -36,13 +41,15 @@ public class BodySourceManager : MonoBehaviour
             var frame = _Reader.AcquireLatestFrame();
             if (frame != null)
             {
-                if (_Data == null)
+                _FloorClipPlane = frame.FloorClipPlane;
+
+                if (_BodyData == null)
                 {
-                    _Data = new Body[_Sensor.BodyFrameSource.BodyCount];
+                    _BodyData = new Body[_Sensor.BodyFrameSource.BodyCount];
                 }
                 
-                frame.GetAndRefreshBodyData(_Data);
-                
+                frame.GetAndRefreshBodyData(_BodyData);
+
                 frame.Dispose();
                 frame = null;
             }
