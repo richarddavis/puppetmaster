@@ -39,8 +39,16 @@ public class GroundManager : MonoBehaviour {
                 return;
             }
 
-            Ground.transform.position = new Vector3(Ground.transform.position.x, GetFloorHeight(FloorData) * _FloorHeightMultiplier, Ground.transform.position.z);
-            Ground.transform.eulerAngles = new Vector3((float)GetTilt(FloorData), Ground.transform.eulerAngles.y, Ground.transform.eulerAngles.z);
+            float floorHeight = GetFloorHeight(FloorData);
+            if (floorHeight != 0f)
+            {
+                Debug.Log("Calibrating floor height and tilt.");
+                Ground.transform.position = new Vector3(Ground.transform.position.x, GetFloorHeight(FloorData) * _FloorHeightMultiplier, Ground.transform.position.z);
+                Ground.transform.eulerAngles = new Vector3((float)GetTilt(FloorData), Ground.transform.eulerAngles.y, Ground.transform.eulerAngles.z);
+            } else
+            {
+                Debug.Log("The Kinect's field of view is limited. Not calibrating floor height and tilt.");
+            }
         }
     }
 
