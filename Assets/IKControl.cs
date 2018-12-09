@@ -18,7 +18,8 @@ public class IKControl : MonoBehaviour
     public Transform FootRightObj = null;
     public Transform FootLeftObj = null;
     public Transform LookObj = null;
-    private const float BODY_SCALE = 6f;
+    private const float BODY_SCALE = 1f; //6f
+    private const float JOINT_SCALE = 1f; //10f
 
     public Kinect.Body KinectBodyObject;
     public GameObject UnityBodyObject;
@@ -174,7 +175,7 @@ public class IKControl : MonoBehaviour
                 lr.SetWidth(0.05f, 0.05f);
             }
 
-            jointObj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            jointObj.transform.localScale = new Vector3(0.03f, 0.03f, 0.03f);
             jointObj.name = jt.ToString();
             jointObj.transform.parent = body.transform;
         }
@@ -182,6 +183,7 @@ public class IKControl : MonoBehaviour
         Kinect.Joint Neck = kinectBody.Joints[Kinect.JointType.Neck];
         Kinect.Joint SpineMid = kinectBody.Joints[Kinect.JointType.SpineMid];
         float TorsoLength = GetBoneSize(Neck, SpineMid);
+        // TorsoLength is .30 (about a foot) for me (6'1").
         transform.parent.localScale = new Vector3(TorsoLength * BODY_SCALE, TorsoLength * BODY_SCALE, TorsoLength * BODY_SCALE);
 
         return body;
@@ -311,6 +313,6 @@ public class IKControl : MonoBehaviour
 
     private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
     {
-        return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);
+        return new Vector3(joint.Position.X * JOINT_SCALE, joint.Position.Y * JOINT_SCALE, joint.Position.Z * JOINT_SCALE);
     }
 }

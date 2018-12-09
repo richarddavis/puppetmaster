@@ -9,7 +9,7 @@ public class GroundManager : MonoBehaviour {
     public GameObject BodySourceManager;
     private BodySourceManager _BodyManager;
     public GameObject Ground;
-    private float _FloorHeightMultiplier = -4f;
+    private float _FloorHeightMultiplier = -1f; //-4f
 
     // Use this for initialization
     void Start () {
